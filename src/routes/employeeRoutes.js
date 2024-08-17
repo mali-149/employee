@@ -1,15 +1,17 @@
-git const express = require("express");
+const express = require("express");
 const router = express.Router();
 const {
   createEmployee,
   getAllEmployees,
   getEmployeeById,
+  getProfile,
   updateEmployee,
   deleteEmployee
 } = require("../controllers/employeeController");
 
 router.post("/", createEmployee);
 router.get("/", getAllEmployees);
+router.get("/profile/:id", getProfile);
 router.get("/:id", getEmployeeById);
 router.put("/:id", updateEmployee);
 router.delete("/:id", deleteEmployee);
