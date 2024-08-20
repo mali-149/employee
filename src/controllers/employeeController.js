@@ -12,10 +12,15 @@ exports.createEmployee = async (req, res) => {
   }
 };
 
-// Get All Employees
+// Get All Employees (with optional query filter)
 exports.getAllEmployees = async (req, res) => {
   try {
-    const employees = await Employee.find();
+    const { name, email } = req.query;
+    const filter = {};
+    if (name) filter.name = new RegExp(name, "i");
+    if (email) filter.email = new RegExp(email, "i");
+
+    const employees = await Employee.find(filter);
     res.status(200).json(employees);
   } catch (error) {
     res.status(500).json({ message: error.message });
