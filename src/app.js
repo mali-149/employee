@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const employeeRoutes = require("./routes/employeeRoutes");
+const errorHandler = require("./middleware/errorHandler");
 
 const app = express();
 
@@ -17,5 +18,8 @@ app.get("/", (req, res) => {
     message: "API is working...",
   });
 });
+
+// Error Handling Middleware
+app.use(errorHandler);
 
 module.exports = app;
