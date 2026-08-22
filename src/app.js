@@ -14,7 +14,7 @@ app.use("/api/employees", employeeRoutes);
 // Test API
 app.get("/", (req, res) => {
   res.json({
-    message: "API is working",
+    message: "API is working!!",
   });
 });
 
